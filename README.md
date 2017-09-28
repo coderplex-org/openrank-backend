@@ -4,19 +4,18 @@ Join the disucssion chatroom for this project on Discord : https://discord.gg/c7
 
 ## Resources : 
  Vue.js 
- - [https://www.youtube.com/watch?v=z6hQqgvGI4Y]
+ - https://www.youtube.com/watch?v=z6hQqgvGI4Y
  - Intro Guide [https://vuejs.org/v2/guide/]
 
  Django 
- - [https://tutorial.djangogirls.org/en/]
- - [http://www.obeythetestinggoat.com/pages/book.html#toc]
- - [https://djangobook.com/]
- - [https://www.youtube.com/watch?v=Ky59C5geOtg]
- - [https://www.youtube.com/watch?v=yDv5FIAeyoY]
- - [https://www.youtube.com/playlist?list=PLEsfXFp6DpzQFqfCur9CJ4QnKQTVXUsRy]
+ - https://tutorial.djangogirls.org/en/
+ - http://www.obeythetestinggoat.com/pages/book.html#toc
+ - https://djangobook.com/
+ - https://www.youtube.com/watch?v=Ky59C5geOtg
+ - https://www.youtube.com/watch?v=yDv5FIAeyoY
+ - https://www.youtube.com/playlist?list=PLEsfXFp6DpzQFqfCur9CJ4QnKQTVXUsRy
 
-Awesome beginners-friendly Projects
-[https://github.com/MunGell/awesome-for-beginners]
+Awesome beginners-friendly Projects : https://github.com/MunGell/awesome-for-beginners
 
 ## Roles 
 The application will have different roles for different users. They are as follows :
