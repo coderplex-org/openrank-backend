@@ -1,5 +1,7 @@
 OpenRank is a free and open source alternative for websites like HackerRank, HackerEarth etc. Using this software, startups can self-host, create contests and evaluate potential candidates for job openings within their company.
 
+Join the disucssion chatroom for this project on Discord : https://discord.gg/c7pU8Rw
+
 ## Roles 
 The application will have different roles for different users. They are as follows :
 - User with "creator" role can :         
