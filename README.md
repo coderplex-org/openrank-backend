@@ -2,6 +2,22 @@ OpenRank is a free and open source alternative for websites like HackerRank, Hac
 
 Join the disucssion chatroom for this project on Discord : https://discord.gg/c7pU8Rw
 
+## Resources : 
+ Vue.js 
+ - [https://www.youtube.com/watch?v=z6hQqgvGI4Y]
+ - Intro Guide [https://vuejs.org/v2/guide/]
+
+ Django 
+ - [https://tutorial.djangogirls.org/en/]
+ - [http://www.obeythetestinggoat.com/pages/book.html#toc]
+ - [https://djangobook.com/]
+ - [https://www.youtube.com/watch?v=Ky59C5geOtg]
+ - [https://www.youtube.com/watch?v=yDv5FIAeyoY]
+ - [https://www.youtube.com/playlist?list=PLEsfXFp6DpzQFqfCur9CJ4QnKQTVXUsRy]
+
+Awesome beginners-friendly Projects
+[https://github.com/MunGell/awesome-for-beginners]
+
 ## Roles 
 The application will have different roles for different users. They are as follows :
 - User with "creator" role can :         
@@ -13,6 +29,7 @@ The application will have different roles for different users. They are as follo
 - User with "Contestant" role can :
   1. Register and participate in contests
   2. Submit their code, and test for custom inputs
+
 
 ## Tech Stack :
 1. Django (for backend)
