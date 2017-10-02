@@ -10,14 +10,17 @@ class Contest(models.Model):
     url = models.URLField()
     is_public = models.BooleanField()
     starttime = models.TimeField()
-    id_user = models.ForeignKey(User)
+    user_id = models.ForeignKey(User)
     position = models.ForeignKey(Position)
     cutoff_duration = models.IntegerField()
     login_start_time = models.TimeField()
     password = models.charField(max_length=45)
 
 
-class Position(models.models)
+class Position(models.models):
+	job_title = models.charField()
+	
+
 
 
 
@@ -33,13 +36,13 @@ class User(models.Model):
     role = models.OneToOneField()  # A Role can oprionally be assigned to a User. But a User MUST be assigned to SOME ROLE
 	name  = models.CharField(max_length=60)
 	email = models.EmailFiel(dmax_length=60)
-	passord = models.CharField(max_length=)
-	phone_number = models.IntegerField()
+	passord = models.CharField(max_length=50)
+	phone_number = models.charField(max_length=10)
 
 
 class Enrollment(models.Model)
-    id_user =    models.ForeignKey(User)
-    id_contest = models.ForeignKey(Contest,on_delete=models.CASCADE)
+    user_id =    models.ForeignKey(User)
+    contest_id = models.ForeignKey(Contest,on_delete=models.CASCADE)
     marksobtained = models.IntegerField()
     userDetails = models.charField()
 
@@ -57,12 +60,11 @@ class Question(models.Model):
 
 
 class ContestQuestion(models.Model):
-	id_question = models.ForeignKey
-	id_contest  = models.ForeignKey
+	question_id = models.ForeignKey
+	contest_id = models.ForeignKey
 	total_marks  = models.IntegerField()
 	time_limit   = models.TimeField()
-	memory_limit = models.TimeField()  #Now why on earth is memory limit put in terms of seconds in the ER dia?
-	 #Suggesstion as to what kind of field  should memorylimit be  @everyone #immediately
+	memory_limit = models.IntegerField()  
 	variable_constraints = models.CharField(max_length=45)
 
 
@@ -71,8 +73,8 @@ class Language(models.Model):
 
 
 class QuestionLanguage(models.Model):
-	id_question = models.ForeignKey(Question,on_delete=models.CASCADE)
-	id_language = models.ForeignKey(Language,on_delete=models.CASCADE)
+	question_id = models.ForeignKey(Question,on_delete=models.CASCADE)
+	anguage_id = models.ForeignKey(Language,on_delete=models.CASCADE)
 	function_signature =  models.TextField()
 	function_parameters = models.charField()
 	starter_code =        models.charField()
@@ -86,8 +88,8 @@ class Tag(models.Model):
 class TestCase(models.Model):
 	_input = models.charField()
 	output = models.charField()
-	id_testcaseBatch = models.ForeignKey(TestCaseBatch,on_delete=models.CASCADE)
-	id_question = models.ForeignKey(Question,on_delete = models.CASCADE)
+	testcaseBatch_id = models.ForeignKey(TestCaseBatch,on_delete=models.CASCADE)
+	question_id = models.ForeignKey(Question,on_delete = models.CASCADE)
 	is_hidden = models.BooleanField()
 
 class TestCaseBatch(models.Model):
@@ -100,10 +102,10 @@ class TestCaseBatch(models.Model):
 class Submission(models.Model):
 	''' Currently these fields are planned
 	Note  three stars before fieldName if it is a RelationshipField
-	1)***SubmitedBy - will help identify which user submitted this sumission
+	1)***enrolment_id - will help identify which user submitted this sumission
 	             - It will relate to the Users model in a ManyToOne Relation (definately Not manyToMany because One  same submission can't be made by two distinct users )
 	
-	2)***WhichContest - will help identify as part of which Contest this submission was made.
+	2)***contest_id - will help identify as part of which Contest this submission was made.
 	                  - It  will Relate to the Contest model
 
 	
@@ -118,13 +120,7 @@ class Submission(models.Model):
 
 	scorevaluated = models.IntegerField()
 	program  =  models.TextField()
-	id_question = models.ForeignKey(Question, on_delete=models.CASCADE)
-	id_enrollment = models.ForeignKey(Enrollment,on_delete=models.CASCADE)
-	which_language = models.ForeighKey(Language,on_delete=models.CASCADE)
+	question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
+	enrollment_id = models.ForeignKey(Enrollment,on_delete=models.CASCADE)
+    language_id = models.ForeighKey(Language,on_delete=models.CASCADE)
 
-class Solution(models.Model):
-# I don't see the point in haveng a seperate solution table
-
-#I think Submission is the generic thing 
-# and only  something done by the Problem Setter or A Tester should be officially Recognized as a solution 
-#Rest all are simply Submissions (generic!)
