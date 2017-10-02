@@ -8,13 +8,20 @@ class Contest(models.Model):
     name=models.CharField()
     description=models.TextField()
     url = models.URLField()
-    ispublic = models.BooleanField()
-    duration =  #which Buildin FIeld to use? TimeField?
+    is_public = models.BooleanField()
     starttime = models.TimeField()
+    id_user = models.ForeignKey(User)
+    position = models.ForeignKey(Position)
+    cutoff_duration = models.IntegerField()
+    login_start_time = models.TimeField()
+    password = models.charField(max_length=45)
+
+
+class Position(models.models)
 
 
 
-class Users(models.Model):
+class User(models.Model):
 	'''Currently these fiels are planned
 	1)name -eh just the name.     should there be a max length? for name? 
 	2)email - email of the contestant.  BuiltIn  EmailField from django is being used.
@@ -22,19 +29,71 @@ class Users(models.Model):
 	4)phone_number- an IntegerField.    how will we validate this? is there any Buildin  (like how it is for Email)
 
 '''
+
+    role = models.OneToOneField()  # A Role can oprionally be assigned to a User. But a User MUST be assigned to SOME ROLE
 	name  = models.CharField(max_length=60)
 	email = models.EmailFiel(dmax_length=60)
 	passord = models.CharField(max_length=)
 	phone_number = models.IntegerField()
 
 
+class Enrollment(models.Model)
+    id_user =    models.ForeignKey(User)
+    id_contest = models.ForeignKey(Contest,on_delete=models.CASCADE)
+    marksobtained = models.IntegerField()
+    userDetails = models.charField()
+
+class Role(models.Model):
+	role = model.charField()
+
 
 class Question(models.Model):
 
 	description = models.TextField()
-	totalmarks = models.IntegerField()
+	total_marks = models.IntegerField()
+	tag = models.manyToMany(Tag)
 
-	solution = 
+	 
+
+
+class ContestQuestion(models.Model):
+	id_question = models.ForeignKey
+	id_contest  = models.ForeignKey
+	total_marks  = models.IntegerField()
+	time_limit   = models.TimeField()
+	memory_limit = models.TimeField()  #Now why on earth is memory limit put in terms of seconds in the ER dia?
+	 #Suggesstion as to what kind of field  should memorylimit be  @everyone #immediately
+	variable_constraints = models.CharField(max_length=45)
+
+
+class Language(models.Model):
+	language = models.charField()
+
+
+class QuestionLanguage(models.Model):
+	id_question = models.ForeignKey(Question,on_delete=models.CASCADE)
+	id_language = models.ForeignKey(Language,on_delete=models.CASCADE)
+	function_signature =  models.TextField()
+	function_parameters = models.charField()
+	starter_code =        models.charField()
+
+
+class Tag(models.Model):
+	tag_description =   models.charField()  #A charField
+	questions = models.manyToMany(Question)
+    
+
+class TestCase(models.Model):
+	_input = models.charField()
+	output = models.charField()
+	id_testcaseBatch = models.ForeignKey(TestCaseBatch,on_delete=models.CASCADE)
+	id_question = models.ForeignKey(Question,on_delete = models.CASCADE)
+	is_hidden = models.BooleanField()
+
+class TestCaseBatch(models.Model):
+	marks = models.IntegerField()
+	title = models.charField()
+
 
 
 
@@ -52,10 +111,16 @@ class Submission(models.Model):
 
 	4)program   - a .py file  which is the code submited (Just For Now)
 	'''
-	submitedby = 
-	whichcontest=
+	#submitedby = 
+	#whichcontest= #Dropped instead this will be found from relation to Enrollment table
+	               #So there is no direct relation between Contest and Submission??  @Bhanu @Kapil
+	
+
 	scorevaluated = models.IntegerField()
-	program  =  # it has to be  a  FileField()?
+	program  =  models.TextField()
+	id_question = models.ForeignKey(Question, on_delete=models.CASCADE)
+	id_enrollment = models.ForeignKey(Enrollment,on_delete=models.CASCADE)
+	which_language = models.ForeighKey(Language,on_delete=models.CASCADE)
 
 class Solution(models.Model):
 # I don't see the point in haveng a seperate solution table
