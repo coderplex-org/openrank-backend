@@ -35,8 +35,8 @@ class User(models.Model):
 
     role = models.OneToOneField()  # A Role can oprionally be assigned to a User. But a User MUST be assigned to SOME ROLE
 	name  = models.CharField(max_length=60)
-	email = models.EmailFiel(dmax_length=60)
-	pasword = models.CharField(max_length=50)
+	email = models.EmailField(dmax_length=60)
+	password = models.CharField(max_length=50)
 	phone_number = models.charField(max_length=10)
 
 
@@ -47,7 +47,7 @@ class Enrollment(models.Model)
     userDetails = models.charField()
 
 class Role(models.Model):
-	role = model.charField()
+	role = models.charField()
 
 
 class Question(models.Model):
