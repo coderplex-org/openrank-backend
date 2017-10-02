@@ -19,7 +19,7 @@ class Contest(models.Model):
 
 class Position(models.models):
 	job_title = models.charField()
-	
+
 
 
 
@@ -36,7 +36,7 @@ class User(models.Model):
     role = models.OneToOneField()  # A Role can oprionally be assigned to a User. But a User MUST be assigned to SOME ROLE
 	name  = models.CharField(max_length=60)
 	email = models.EmailFiel(dmax_length=60)
-	passord = models.CharField(max_length=50)
+	pasword = models.CharField(max_length=50)
 	phone_number = models.charField(max_length=10)
 
 
@@ -54,16 +54,16 @@ class Question(models.Model):
 
 	description = models.TextField()
 	total_marks = models.IntegerField()
-	tag = models.manyToMany(Tag)
+	tags = models.manyToMany(Tag)
 
 	 
 
 
 class ContestQuestion(models.Model):
-	question_id = models.ForeignKey
-	contest_id = models.ForeignKey
+	question_id = models.ForeignKey(Question,on_delete=models.CASCADE)
+	contest_id = models.ForeignKey(Contest,on_delete=models.CASCADE)
 	total_marks  = models.IntegerField()
-	time_limit   = models.TimeField()
+	time_limit   = models.IntegerField()
 	memory_limit = models.IntegerField()  
 	variable_constraints = models.CharField(max_length=45)
 
@@ -74,7 +74,7 @@ class Language(models.Model):
 
 class QuestionLanguage(models.Model):
 	question_id = models.ForeignKey(Question,on_delete=models.CASCADE)
-	anguage_id = models.ForeignKey(Language,on_delete=models.CASCADE)
+	language_id = models.ForeignKey(Language,on_delete=models.CASCADE)
 	function_signature =  models.TextField()
 	function_parameters = models.charField()
 	starter_code =        models.charField()
