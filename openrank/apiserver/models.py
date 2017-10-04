@@ -43,8 +43,8 @@ class User(models.Model):
 class Enrollment(models.Model)
     user_id =    models.ForeignKey(User)
     contest_id = models.ForeignKey(Contest,on_delete=models.CASCADE)
-    marksobtained = models.IntegerField()
-    userDetails = models.charField()
+    marks_obtained = models.IntegerField()
+    user_details = models.charField()
 
 class Role(models.Model):
 	role = models.charField()
@@ -86,7 +86,7 @@ class Tag(models.Model):
     
 
 class TestCase(models.Model):
-	_input = models.charField()
+	testcase_input = models.charField()
 	output = models.charField()
 	testcaseBatch_id = models.ForeignKey(TestCaseBatch,on_delete=models.CASCADE)
 	question_id = models.ForeignKey(Question,on_delete = models.CASCADE)
@@ -118,7 +118,7 @@ class Submission(models.Model):
 	               #So there is no direct relation between Contest and Submission??  @Bhanu @Kapil
 	
 
-	scorevaluated = models.IntegerField()
+	score_valuated = models.IntegerField()
 	program  =  models.TextField()
 	question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
 	enrollment_id = models.ForeignKey(Enrollment,on_delete=models.CASCADE)
