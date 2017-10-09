@@ -1,6 +1,6 @@
 # frontend
 
-> Frontend for code submission and question and test maintenance
+> Frontend for OpenRank
 
 ## Build Setup
 
