@@ -2,6 +2,22 @@ OpenRank is a free and open source alternative for websites like HackerRank, Hac
 
 Join the disucssion chatroom for this project on Discord : https://discord.gg/c7pU8Rw
 
+## Running :
+
+You can run the apiserver by using the following command
+
+`openrank/manage.py runserver` 
+
+To run frontend use the following commands in sequence
+
+`cd frontend`
+
+`npm install`
+
+`npm run dev`
+
+open http://localhost:8080/ once the server is started
+
 ## Resources : 
  Vue.js 
  - https://www.youtube.com/watch?v=z6hQqgvGI4Y
