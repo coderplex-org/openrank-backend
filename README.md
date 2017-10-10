@@ -4,8 +4,10 @@ Join the disucssion chatroom for this project on Discord : https://discord.gg/c7
 
 ## Resources : 
  Vue.js 
- - https://www.youtube.com/watch?v=z6hQqgvGI4Y
- - Intro Guide [https://vuejs.org/v2/guide/]
+ - [Vue.js 2.0 In 60 Minutes](https://www.youtube.com/watch?v=z6hQqgvGI4Y)
+ - [Official Vue.js Intro Guide](https://vuejs.org/v2/guide/)
+ - [Official Vue.js Style Guide](https://vuejs.org/v2/style-guide/)
+ - [More Resources](https://github.com/vuejs/awesome-vue#awesome-vuejs-)
 
  Django 
  - https://tutorial.djangogirls.org/en/
