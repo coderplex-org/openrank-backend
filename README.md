@@ -16,7 +16,7 @@ To run frontend use the following commands in sequence
 
 `npm run dev`
 
-open http://localhost:8080/ once the server is started
+open http://localhost:8081/ once the server is started
 
 ## Resources : 
  Vue.js 
