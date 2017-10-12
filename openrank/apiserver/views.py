@@ -3,4 +3,6 @@ from django.http import HttpResponse
 
 # Create your views here.
 def helloworld(request):
-    return HttpResponse("Hello world")
+    response = HttpResponse("Hello world")
+    response["Access-Control-Allow-Origin"] = "*"
+    return response
