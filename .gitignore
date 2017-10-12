@@ -1,1 +1,3 @@
- openrank/db.sqlite3
+openrank/db.sqlite3
+openrank/*/migrations
+openrank/*/__pycache__/

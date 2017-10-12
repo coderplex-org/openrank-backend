@@ -1,17 +1,18 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <hello-world/>
+    <hello-api-server/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld'
-
+import HelloApiServer from './components/HelloApiServer'
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    HelloApiServer
   }
 }
 </script>
