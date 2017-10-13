@@ -16,7 +16,7 @@ export default {
     }
   },
 
-  created() {
+  mounted() {
       HTTP.get('helloworld/')
       .then(response => {
         this.msg = response.data;
