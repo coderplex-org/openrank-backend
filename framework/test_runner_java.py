@@ -1,9 +1,7 @@
-import sys
-sys.path.insert(0, '../framework')
 
 from framework.Classes import Status
 from framework.runner import run
-from framework.tests.data import java_source_code_with_exception, java_source_code_with_compile_error, java_source_code_with_input, tc1
+from framework.data import java_source_code_with_exception, java_source_code_with_compile_error, java_source_code_with_input, tc1
 
 
 def test_add_two_numbers_code():
