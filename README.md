@@ -2,6 +2,8 @@ OpenRank is a free and open source alternative for websites like HackerRank, Hac
 
 Join the disucssion chatroom for this project on Discord : https://discord.gg/c7pU8Rw
 
+[![Build Status](https://travis-ci.org/jbuddha/OpenRank.svg?branch=master)](https://travis-ci.org/jbuddha/OpenRank)
+
 ## Running :
 
 You can run the apiserver by using the following command
