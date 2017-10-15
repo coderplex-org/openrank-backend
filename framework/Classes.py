@@ -42,11 +42,12 @@ class Output:
         self.test_case_id = ""
         self.memory = 0
         self.time = 0
-        self.output = ""
+        self.stdout = ""
+        self.stderr = ""
         self.status = Status.IN_PROGRESS
 
     def __repr__(self):
-        return self.output
+        return self.stdout
 
 
 

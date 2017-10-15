@@ -21,7 +21,6 @@ def run(source, source_extension, compile_command, run_command, test_cases=[defa
     try:
         source_file_name = create_source_file(source, source_extension)
 
-        status = 0
         out_compile = Output()
         if compile_command:
             completed = subprocess.run([compile_command, source_file_name],
@@ -30,7 +29,8 @@ def run(source, source_extension, compile_command, run_command, test_cases=[defa
             if completed.returncode:
                 result.append(out_compile)
                 out_compile.status = Status.COMPILE_ERROR
-                out_compile.output = completed.stdout.decode('utf-8') + completed.stderr.decode('utf-8')
+                out_compile.stdout = completed.stdout.decode('utf-8').rstrip()
+                out_compile.stderr = completed.stderr.decode('utf-8').rstrip()
 
         if out_compile.status != Status.COMPILE_ERROR:
             for test_case in test_cases:
@@ -43,8 +43,9 @@ def run(source, source_extension, compile_command, run_command, test_cases=[defa
                                                stderr=subprocess.PIPE,
                                                input=test_case.input.encode('utf-8'),
                                                timeout=test_case.timeout)
-                    out_test.output = completed.stdout.decode('utf-8') + completed.stderr.decode('utf-8')
-                    out_test.output = out_test.output.rstrip()
+                    out_test.stdout = completed.stdout.decode('utf-8').rstrip()
+                    out_test.stderr = completed.stderr.decode('utf-8').rstrip()
+
                     if completed.returncode:
                         out_test.status = Status.RUNTIME_ERROR
                     else:
