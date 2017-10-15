@@ -20,7 +20,7 @@ def run(source, source_extension, compile_command, run_command, test_cases=defau
 
     try:
         source_file_name = create_source_file(source, source_extension)
-        out_compile = compile(compile_command, source_file_name, result)
+        out_compile = compile_source(compile_command, source_file_name, result)
         execute_tests(run_command, test_cases, out_compile, result)
 
     except:
@@ -56,7 +56,7 @@ def execute_tests(run_command, test_cases, out_compile, result):
                     out_test.status = Status.OK
 
 
-def compile(compile_command, source_file_name, result):
+def compile_source(compile_command, source_file_name, result):
     out_compile = Output()
     if compile_command:
         completed = subprocess.run([compile_command, source_file_name],
