@@ -47,7 +47,7 @@ class Output:
         self.status = Status.IN_PROGRESS
 
     def __repr__(self):
-        return self.stdout
+        return self.stdout + self.stderr
 
 
 

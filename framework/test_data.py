@@ -1,5 +1,17 @@
 from framework.Classes import Testcase
 
+
+tc1 = Testcase()
+tc1.id = "1"
+tc1.input = """23 34"""
+tc1.timeout = 1
+
+tc2 = Testcase()
+tc2.id = "2"
+tc2.input = """21
+34"""
+tc2.timeout = 1
+
 java_source_code_with_input = """
                 import java.util.*;
                 
@@ -36,12 +48,20 @@ java_source_code_with_compile_error = """
                 }
              """
 
-tc1 = Testcase()
-tc1.id = "1"
-tc1.input = "23 34"
-tc1.timeout = 1
+python3_source_code_add_two_numbers = """ 
+numbers = input().split()
+number1 = numbers[0]
+number2 = numbers[1]
+ 
+sum = int(number1) + int(number2)
+print(sum)
+"""
 
-tc2 = Testcase()
-tc2.id = "2"
-tc2.input = "21 34"
-tc2.timeout = 1
+python2_source_code_add_two_numbers = """ 
+numbers = raw_input().split()
+number1 = numbers[0]
+number2 = numbers[1]
+
+sum = int(number1) + int(number2)
+print sum
+"""

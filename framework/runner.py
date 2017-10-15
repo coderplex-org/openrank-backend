@@ -22,11 +22,11 @@ def run(source, source_extension, compile_command, run_command, test_cases=defau
         source_file_name = create_source_file(source, source_extension)
         out_compile = compile_source(compile_command, source_file_name, result)
         execute_tests(run_command, test_cases, out_compile, result)
-
-    except:
+    except Exception as e:
         out_exception = Output()
         result.append(out_exception)
         out_exception.status = Status.ENV_CRASH
+        out_exception.stderr = str(e)
         print(os.sys.exc_info())
 
     os.chdir(current_directory)
@@ -40,7 +40,7 @@ def execute_tests(run_command, test_cases, out_compile, result):
         for test_case in test_cases:
             out_test = Output()
             out_test.test_case_id = test_case.id
-            result.append(out_test)
+
             if run_command:
                 completed = subprocess.run(run_command,
                                            stdout=subprocess.PIPE,
@@ -55,6 +55,8 @@ def execute_tests(run_command, test_cases, out_compile, result):
                 else:
                     out_test.status = Status.OK
 
+                result.append(out_test)
+
 
 def compile_source(compile_command, source_file_name, result):
     out_compile = Output()
@@ -67,6 +69,9 @@ def compile_source(compile_command, source_file_name, result):
             out_compile.status = Status.COMPILE_ERROR
             out_compile.stdout = completed.stdout.decode('utf-8').rstrip()
             out_compile.stderr = completed.stderr.decode('utf-8').rstrip()
+    else:
+        out_compile.status = Status.OK
+
     return out_compile
 
 
