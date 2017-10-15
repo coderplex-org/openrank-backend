@@ -18,6 +18,12 @@ To run frontend use the following commands in sequence
 
 open http://localhost:8081/ once the server is started
 
+## Unit tests :
+
+You can run the unit tests by running following command in project folder. Make sure you install pytest module first.
+
+`python3 -m pytest`
+
 ## Resources : 
  Vue.js 
  - [Vue.js 2.0 In 60 Minutes](https://www.youtube.com/watch?v=z6hQqgvGI4Y)

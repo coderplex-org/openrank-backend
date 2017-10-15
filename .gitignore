@@ -1,3 +1,10 @@
 openrank/db.sqlite3
 openrank/*/migrations
 openrank/*/__pycache__/
+.cache
+.cache/
+framework/__pycache__/
+tests/.cache/
+tests/__pycache__/
+tests/framework/.cache/
+tests/framework/__pycache__/

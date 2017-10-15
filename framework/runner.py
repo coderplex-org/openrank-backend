@@ -5,9 +5,13 @@ import shutil
 
 from framework.Classes import Output, Status, Testcase
 
+default_test_case = Testcase()
+default_test_case.timeout = 2
+default_test_case.id = "1"
 
-def run(source, source_extension, compile_command, run_command, test_cases):
-    source_file_name = "Source." + source_extension
+
+def run(source, source_extension, compile_command, run_command, test_cases=[default_test_case]):
+
     result = []
     current_directory = os.getcwd()
     temp_dir = uuid.uuid4().hex
@@ -15,9 +19,7 @@ def run(source, source_extension, compile_command, run_command, test_cases):
     os.chdir(temp_dir)
 
     try:
-        text_file = open(source_file_name, "w")
-        text_file.write(source)
-        text_file.close()
+        source_file_name = create_source_file(source, source_extension)
 
         status = 0
         out_compile = Output()
@@ -30,7 +32,7 @@ def run(source, source_extension, compile_command, run_command, test_cases):
                 out_compile.status = Status.COMPILE_ERROR
                 out_compile.output = completed.stdout.decode('utf-8') + completed.stderr.decode('utf-8')
 
-        if not out_compile.status:
+        if out_compile.status != Status.COMPILE_ERROR:
             for test_case in test_cases:
                 out_test = Output()
                 out_test.test_case_id = test_case.id
@@ -60,27 +62,11 @@ def run(source, source_extension, compile_command, run_command, test_cases):
     return result
 
 
-source_code = """
-                import java.util.*;
-                
-                class Solution{
-                    public static void main(String... args) {
-                        Scanner scan = new Scanner(System.in);
-                        int sum = scan.nextInt() + scan.nextInt();
-                        System.out.println(sum);
-                    }
-                }
-             """
+def create_source_file(source, source_extension):
+    source_file_name = "Source." + source_extension
+    text_file = open(source_file_name, "w")
+    text_file.write(source)
+    text_file.close()
+    return source_file_name
 
-tc1 = Testcase()
-tc1.id = "1"
-tc1.input = "23 34"
-tc1.timeout = 1
 
-tc2 = Testcase()
-tc2.id = "2"
-tc2.input = "21 34"
-tc2.timeout = 1
-
-out = run(source_code, "java", "javac", ["java","Solution"], [tc1, tc2])
-print(out)
