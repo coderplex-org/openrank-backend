@@ -8,10 +8,10 @@ from framework.Classes import Output, Status, Testcase
 default_test_case = Testcase()
 default_test_case.timeout = 2
 default_test_case.id = "1"
+default_testcase_array = [default_test_case]
 
 
-def run(source, source_extension, compile_command, run_command, test_cases=[default_test_case]):
-
+def run(source, source_extension, compile_command, run_command, test_cases=default_testcase_array):
     result = []
     current_directory = os.getcwd()
     temp_dir = uuid.uuid4().hex
@@ -20,36 +20,8 @@ def run(source, source_extension, compile_command, run_command, test_cases=[defa
 
     try:
         source_file_name = create_source_file(source, source_extension)
-
-        out_compile = Output()
-        if compile_command:
-            completed = subprocess.run([compile_command, source_file_name],
-                                       stdout=subprocess.PIPE,
-                                       stderr=subprocess.PIPE)
-            if completed.returncode:
-                result.append(out_compile)
-                out_compile.status = Status.COMPILE_ERROR
-                out_compile.stdout = completed.stdout.decode('utf-8').rstrip()
-                out_compile.stderr = completed.stderr.decode('utf-8').rstrip()
-
-        if out_compile.status != Status.COMPILE_ERROR:
-            for test_case in test_cases:
-                out_test = Output()
-                out_test.test_case_id = test_case.id
-                result.append(out_test)
-                if run_command:
-                    completed = subprocess.run(run_command,
-                                               stdout=subprocess.PIPE,
-                                               stderr=subprocess.PIPE,
-                                               input=test_case.input.encode('utf-8'),
-                                               timeout=test_case.timeout)
-                    out_test.stdout = completed.stdout.decode('utf-8').rstrip()
-                    out_test.stderr = completed.stderr.decode('utf-8').rstrip()
-
-                    if completed.returncode:
-                        out_test.status = Status.RUNTIME_ERROR
-                    else:
-                        out_test.status = Status.OK
+        out_compile = compile(compile_command, source_file_name, result)
+        execute_tests(run_command, test_cases, out_compile, result)
 
     except:
         out_exception = Output()
@@ -61,6 +33,41 @@ def run(source, source_extension, compile_command, run_command, test_cases=[defa
     shutil.rmtree(temp_dir, True)
 
     return result
+
+
+def execute_tests(run_command, test_cases, out_compile, result):
+    if out_compile.status != Status.COMPILE_ERROR:
+        for test_case in test_cases:
+            out_test = Output()
+            out_test.test_case_id = test_case.id
+            result.append(out_test)
+            if run_command:
+                completed = subprocess.run(run_command,
+                                           stdout=subprocess.PIPE,
+                                           stderr=subprocess.PIPE,
+                                           input=test_case.input.encode('utf-8'),
+                                           timeout=test_case.timeout)
+                out_test.stdout = completed.stdout.decode('utf-8').rstrip()
+                out_test.stderr = completed.stderr.decode('utf-8').rstrip()
+
+                if completed.returncode:
+                    out_test.status = Status.RUNTIME_ERROR
+                else:
+                    out_test.status = Status.OK
+
+
+def compile(compile_command, source_file_name, result):
+    out_compile = Output()
+    if compile_command:
+        completed = subprocess.run([compile_command, source_file_name],
+                                   stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE)
+        if completed.returncode:
+            result.append(out_compile)
+            out_compile.status = Status.COMPILE_ERROR
+            out_compile.stdout = completed.stdout.decode('utf-8').rstrip()
+            out_compile.stderr = completed.stderr.decode('utf-8').rstrip()
+    return out_compile
 
 
 def create_source_file(source, source_extension):
