@@ -117,3 +117,24 @@ int main()
 
     return 0;
 }"""
+
+cs_source_code_add_two_numbers = """
+using System;
+ 
+namespace OpenRank
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+ 
+            int x;
+            int y;
+            int result;
+            x = Convert.ToInt32(Console.ReadLine());
+            y = Convert.ToInt32(Console.ReadLine());
+            result = x + y;
+            Console.Write(""+result);
+        }
+    }
+}"""
