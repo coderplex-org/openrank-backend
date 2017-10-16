@@ -2,6 +2,8 @@ OpenRank is a free and open source alternative for websites like HackerRank, Hac
 
 Join the disucssion chatroom for this project on Discord : https://discord.gg/c7pU8Rw
 
+[![Build Status](https://travis-ci.org/jbuddha/OpenRank.svg?branch=master)](https://travis-ci.org/jbuddha/OpenRank)
+
 ## Running :
 
 You can run the apiserver by using the following command
@@ -17,6 +19,12 @@ To run frontend use the following commands in sequence
 `npm run dev`
 
 open http://localhost:8081/ once the server is started
+
+## Unit tests :
+
+You can run the unit tests by running following command in project folder. Make sure you install pytest module first.
+
+`python3 -m pytest`
 
 ## Resources : 
  Vue.js 
