@@ -12,7 +12,7 @@ def test_python3_add_two_numbers_code():
 
 
 def test_python2_add_two_numbers_code():
-    out = run(python2_source_code_add_two_numbers, "py", None, ["python2", "Source.py"], [tc1])
+    out = run(python2_source_code_add_two_numbers, "py", None, ["python", "Source.py"], [tc1])
     print(out)
     assert 1 == len(out)
     assert '57' == out[0].stdout

@@ -3,7 +3,7 @@ from framework.Classes import Testcase
 
 tc1 = Testcase()
 tc1.id = "1"
-tc1.input = """23 34"""
+tc1.input = '23\n34'
 tc1.timeout = 1
 
 tc2 = Testcase()
@@ -47,19 +47,20 @@ java_source_code_with_compile_error = """
                 }
              """
 
-python3_source_code_add_two_numbers = """ 
-numbers = input().split()
-number1 = numbers[0]
-number2 = numbers[1]
+python3_source_code_add_two_numbers = """
+# s = input() 
+# print(s)
+# numbers = s.split()
+number1 = input()
+number2 = input()
  
 sum = int(number1) + int(number2)
 print(sum)
 """
 
 python2_source_code_add_two_numbers = """ 
-numbers = raw_input().split()
-number1 = numbers[0]
-number2 = numbers[1]
+number1 = raw_input()
+number2 = raw_input()
 
 sum = int(number1) + int(number2)
 print sum
