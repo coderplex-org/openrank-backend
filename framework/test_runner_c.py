@@ -12,7 +12,7 @@ def test_c_add_two_numbers_code():
 
 def test_c_add_two_numbers_code_compile_error():
     out = run(c_source_code_add_two_numbers_compile_error, "c", ["gcc", "-o", "program"], ["./program"], [tc1])
-    print(out)
     assert 1 == len(out)
-    assert "error: expected ';' after expression" in out[0].stderr
+    assert ": error: expected" in out[0].stderr
+    assert "sum = a  b;" in out[0].stderr
     assert Status.COMPILE_ERROR == out[0].status
