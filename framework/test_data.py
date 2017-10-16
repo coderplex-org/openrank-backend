@@ -8,8 +8,7 @@ tc1.timeout = 1
 
 tc2 = Testcase()
 tc2.id = "2"
-tc2.input = """21
-34"""
+tc2.input = """21 34"""
 tc2.timeout = 1
 
 java_source_code_with_input = """
@@ -64,4 +63,37 @@ number2 = numbers[1]
 
 sum = int(number1) + int(number2)
 print sum
+"""
+
+c_source_code_add_two_numbers = """
+#include<stdio.h>
+ 
+int main() {
+   int a, b, sum;
+ 
+   scanf("%d %d", &a, &b);
+ 
+   sum = a + b;
+ 
+   printf("%d", sum);
+ 
+   return(0);
+}
+"""
+
+
+c_source_code_add_two_numbers_compile_error = """
+#include<stdio.h>
+ 
+int main() {
+   int a, b, sum;
+ 
+   scanf("%d %d", &a, &b);
+ 
+   sum = a  b;
+ 
+   printf("%d", sum);
+ 
+   return(0);
+}
 """

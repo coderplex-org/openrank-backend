@@ -1,5 +1,3 @@
-import pytest
-
 from framework.Classes import Status
 from framework.runner import run
 from framework.test_data import tc1, python3_source_code_add_two_numbers, python2_source_code_add_two_numbers

@@ -11,7 +11,7 @@ default_test_case.id = "1"
 default_testcase_array = [default_test_case]
 
 
-def run(source, source_extension, compile_command, run_command, test_cases=default_testcase_array):
+def run(source, source_extension, compile_commands, run_command, test_cases=default_testcase_array):
     result = []
     current_directory = os.getcwd()
     temp_dir = uuid.uuid4().hex
@@ -20,7 +20,7 @@ def run(source, source_extension, compile_command, run_command, test_cases=defau
 
     try:
         source_file_name = create_source_file(source, source_extension)
-        out_compile = compile_source(compile_command, source_file_name, result)
+        out_compile = compile_source(compile_commands, source_file_name, result)
         execute_tests(run_command, test_cases, out_compile, result)
     except Exception as e:
         out_exception = Output()
@@ -58,10 +58,11 @@ def execute_tests(run_command, test_cases, out_compile, result):
                 result.append(out_test)
 
 
-def compile_source(compile_command, source_file_name, result):
+def compile_source(compile_commands, source_file_name, result):
     out_compile = Output()
-    if compile_command:
-        completed = subprocess.run([compile_command, source_file_name],
+    if compile_commands:
+        compile_commands.append(source_file_name)
+        completed = subprocess.run(compile_commands,
                                    stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE)
         if completed.returncode:
