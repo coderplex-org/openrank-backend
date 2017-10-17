@@ -11,7 +11,7 @@ default_test_case.id = "1"
 default_testcase_array = [default_test_case]
 
 
-def run(source, source_extension, compile_commands, run_command, test_cases=default_testcase_array):
+def run(source, source_extension, compile_commands, run_commands, test_cases=default_testcase_array):
     result = []
     current_directory = os.getcwd()
     temp_dir = uuid.uuid4().hex
@@ -21,7 +21,7 @@ def run(source, source_extension, compile_commands, run_command, test_cases=defa
     try:
         source_file_name = create_source_file(source, source_extension)
         out_compile = compile_source(compile_commands, source_file_name, result)
-        execute_tests(run_command, test_cases, out_compile, result)
+        execute_tests(run_commands, test_cases, out_compile, result)
     except Exception as e:
         out_exception = Output()
         result.append(out_exception)
