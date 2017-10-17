@@ -1,6 +1,6 @@
-from framework.Classes import Status
-from framework.runner import run
-from framework.test_data import tc1, c_source_code_add_two_numbers, c_source_code_add_two_numbers_compile_error
+from Classes import Status
+from runner import run
+from test_data import tc1, c_source_code_add_two_numbers, c_source_code_add_two_numbers_compile_error
 
 
 def test_c_add_two_numbers_code():

@@ -3,7 +3,7 @@ import os
 import uuid
 import shutil
 
-from framework.Classes import Output, Status, Testcase
+from Classes import Output, Status, Testcase
 
 default_test_case = Testcase()
 default_test_case.timeout = 2

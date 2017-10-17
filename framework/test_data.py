@@ -1,4 +1,4 @@
-from framework.Classes import Testcase
+from Classes import Testcase
 
 
 tc1 = Testcase()
