@@ -1,6 +1,6 @@
-from framework.Classes import Status
-from framework.runner import run
-from framework.test_data import java_source_code_with_input, tc1, tc2, java_source_code_with_no_input
+from Classes import Status
+from runner import run
+from test_data import java_source_code_with_input, tc1, tc2, java_source_code_with_no_input
 
 
 def test_with_no_input():
