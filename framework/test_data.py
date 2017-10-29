@@ -47,16 +47,9 @@ java_source_code_with_compile_error = """
                 }
              """
 
-python3_source_code_add_two_numbers = """
-# s = input() 
-# print(s)
-# numbers = s.split()
-number1 = input()
-number2 = input()
- 
-sum = int(number1) + int(number2)
-print(sum)
-"""
+
+
+
 
 python2_source_code_add_two_numbers = """ 
 number1 = raw_input()
