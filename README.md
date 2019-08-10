@@ -1,8 +1,8 @@
 # OpenRank _Alpha_
 
-OpenRank is a free and open source alternative for websites like HackerRank, HackerEarth etc. Using this software, startups can self-host, create contests and evaluate potential candidates for job openings within their company.
+OpenRank is a free and open source coding challenges platform, similar to websites like HackerRank, HackerEarth etc. Using this software, individuals solve coding challenges to improve their skills, schools and colleges can host their own coding challenges to evaluate their students and help them learn, corporates and startups can create contests to evaluate and screen potential candidates for job openings before in-person innterviews within their company.
 
-Join the disucssion chatroom for this project on Discord : https://chat.coderplex.org
+Join the disucssion chatroom for this project on Discord : https://chat.coderplex.org (#open-source channel)
 
 This project is still under active development. Code contributions are welcome.
 
