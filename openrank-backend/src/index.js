@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import routes from './routes'
 
-console.log('Starting OpenRank Server');
+console.log('Starting OpenRank API Server');
 
 const app = express();
 app.use(cors());

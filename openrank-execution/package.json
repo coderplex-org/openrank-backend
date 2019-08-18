@@ -1,0 +1,33 @@
+{
+  "name": "openrank-execution",
+  "version": "1.0.0",
+  "description": "server/instance for execution of user submitted code on openrank platform",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderplex/OpenRank.git"
+  },
+  "keywords": [
+    "openrank",
+    "execution",
+    "code",
+    "submission"
+  ],
+  "author": "Coderplex",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-cmd": "^3.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "nodemon": "^1.19.1"
+  }
+}
