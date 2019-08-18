@@ -28,12 +28,16 @@ const langMeta = {
   },
   c: {
     extension: "c",
+    defaultExecName: "a",
+    execExtension: "exe",
     command: "",
     interpreted: false,
     compile: "gcc"
   },
   java: {
     extension: "java",
+    defaultExecName: "",
+    execExtension: "",
     command: "java",
     interpreted: false,
     compile: "javac"
@@ -47,24 +51,32 @@ app.post("/", (req, res) => {
   it by spawning a child process based on the meta-data 
   available for a given language
   */
-  const { lang, code } = req.body;
-  fs.writeFile(`temp.${langMeta[lang].extension}`, code, err => {
+  const { lang, code, filename } = req.body;
+  fs.writeFile(`${filename}.${langMeta[lang].extension}`, code, err => {
     if (err) console.log(err);
     else console.log("Successfully Written to File.");
   });
   if (langMeta[lang].interpreted) {
     exec(
-      `${langMeta[lang].command} temp.${langMeta[lang].extension}`,
+      `${langMeta[lang].command} ${filename}.${langMeta[lang].extension}`,
       { timeout: 1000 },
       (err, stdout, stderr) => res.send({ err, stderr, stdout })
     );
   } else {
+    console.log("compiled lang");
     exec(
-      `${langMeta[lang].compile} temp.${langMeta[lang].extension}`,
+      `${langMeta[lang].compile} ${filename}.${langMeta[lang].extension}`,
       (err, stdout, stderr) => {
-        if (stderr == null && err == null) {
+        if (!stderr && !err) {
+          const { execExtension, defaultExecName } = langMeta[lang];
+          const execFilename =
+            (defaultExecName || filename) +
+            (execExtension ? `.${execExtension}` : ``);
+          console.log(
+            `command for execution: ${langMeta[lang].command} ${execFilename}`
+          );
           exec(
-            `${langMeta[lang].command} ./temp.${langMeta[lang].extension}`,
+            `${langMeta[lang].command} ${execFilename}`,
             { timeout: 1000 },
             (err, stdout, stderr) => res.send({ err, stderr, stdout })
           );
@@ -77,6 +89,6 @@ app.post("/", (req, res) => {
   //TODO: Add logic to compare output with testcases saved in db before sending the response.
 });
 
-app.listen(8001, () => {
-  console.log("Example app listening on port 8001!");
+app.listen(9000, () => {
+  console.log("Example app listening on port 9000!");
 });
