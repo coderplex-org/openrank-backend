@@ -4,6 +4,8 @@ OpenRank is a free and open source coding challenges platform, similar to websit
 
 Join the disucssion chatroom for this project on Discord : https://chat.coderplex.org (#open-source channel)
 
+You can view the gist of discussions that happen weekly regarding this project at [Discusionns' gist](/DISCUSSIONS-GIST.md)
+
 This project is still under active development. Code contributions are welcome.
 
 [![Build Status](https://travis-ci.org/coderplex/OpenRank.svg?branch=master)](https://travis-ci.org/coderplex/OpenRank)
