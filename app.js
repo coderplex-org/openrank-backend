@@ -11,17 +11,20 @@ const User = require('./server/models').User;
 const ExtractJwt = passportJWT.ExtractJwt;
 const JwtStrategy = passportJWT.Strategy;
 
-let jwtOptions = {};
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
-jwtOptions.secretOrKey = 'secret';
-// jwtOptions.issuer = 'localhost:8000'; // server
-// jwtOptions.audience = 'localhost:8080'; // client
+let jwtOptions = {
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    secretOrKey: 'jwt-secret',
+    passReqToCallback: true,
+};
 exports.jwtOptions = jwtOptions;
 
-const strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
+const strategy = new JwtStrategy(jwtOptions, function(req, jwt_payload, done) {
     return User
         .findOne({ where: { id: jwt_payload.id } })
-        .then(user => done(null, user))
+        .then(user => {
+            req.currentUser = user;
+            done(null, user)
+        })
         .catch(error => done(error, false));
 });
 

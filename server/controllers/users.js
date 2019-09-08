@@ -23,11 +23,7 @@ module.exports = {
             .catch(error => res.status(400).json({ data: error }));
     },
     get(req, res) {
-        const { id } = req.params;
-        return User
-            .findByPk(id)
-            .then(user => res.status(200).json({ data: user }))
-            .catch(error => res.status(400).json({ data: error }));
+        return res.status(200).json({data: req.user});
     },
     login(req, res) {
         const { email, password } = req.body;
