@@ -1,3 +1,4 @@
+const passport = require('passport');
 const usersController = require('../controllers').users;
 
 module.exports = (app) => {
@@ -5,6 +6,9 @@ module.exports = (app) => {
         message: 'Welcome to the OpenRank API!',
     }));
 
+    app.post('/api/login', usersController.login);
+
     app.post('/api/users', usersController.create);
     app.get('/api/users', usersController.list);
+    app.get('/api/users/:id', passport.authenticate('jwt', { session: false }), usersController.get);
 };
