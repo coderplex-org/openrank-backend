@@ -13,7 +13,7 @@ module.exports = {
                 name,
                 password,
             })
-            .then(user => res.status(201).json({ data: user }))
+            .then(user => res.status(201).json({ data: user , message: 'User successfully got registered!'}))
             .catch(error => res.status(400).json({ data: error }));
     },
     list(req, res) {
