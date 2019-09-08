@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const jwtOptions = require('../../app').jwtOptions;
+const jwtConfig = require('../config/jwtConfig').jwtConfig;
 const User = require('../models').User;
 
 module.exports = {
@@ -23,11 +23,7 @@ module.exports = {
             .catch(error => res.status(400).json({ data: error }));
     },
     get(req, res) {
-        const { id } = req.params;
-        return User
-            .findByPk(id)
-            .then(user => res.status(200).json({ data: user }))
-            .catch(error => res.status(400).json({ data: error }));
+        return res.status(200).json({data: req.user});
     },
     login(req, res) {
         const { email, password } = req.body;
@@ -36,7 +32,7 @@ module.exports = {
             .then(user => {
                 if (user.password === password) {
                     const payload = {id: user.id};
-                    const token = jwt.sign(payload, jwtOptions.secretOrKey);
+                    const token = jwt.sign(payload, jwtConfig.secret);
                     return res.json({ message: "ok", data: { token } });
                 } else {
                     return res.status(401).json({ message: "Passwords did not match" });

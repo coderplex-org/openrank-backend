@@ -10,5 +10,5 @@ module.exports = (app) => {
 
     app.post('/api/users', usersController.create);
     app.get('/api/users', usersController.list);
-    app.get('/api/users/:id', passport.authenticate('jwt', { session: false }), usersController.get);
+    app.get('/api/user', passport.authenticate('jwt', { session: false }), usersController.get);
 };
