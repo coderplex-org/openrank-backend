@@ -2,34 +2,7 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
-const jwt = require('jsonwebtoken');
-const passport = require('passport');
-const passportJWT = require('passport-jwt');
-
-const User = require('./server/models').User;
-
-const ExtractJwt = passportJWT.ExtractJwt;
-const JwtStrategy = passportJWT.Strategy;
-
-let jwtOptions = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'jwt-secret',
-    passReqToCallback: true,
-};
-exports.jwtOptions = jwtOptions;
-
-const strategy = new JwtStrategy(jwtOptions, function(req, jwt_payload, done) {
-    return User
-        .findOne({ where: { id: jwt_payload.id } })
-        .then(user => {
-            req.currentUser = user;
-            done(null, user)
-        })
-        .catch(error => done(error, false));
-});
-
-passport.use(strategy);
-
+require('./server/config/passport');
 // Set up the express app
 const app = express();
 
