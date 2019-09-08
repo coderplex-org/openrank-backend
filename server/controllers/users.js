@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-const jwtConfig = require('../config/jwtConfig').jwtConfig;
 const User = require('../models').User;
 
 module.exports = {
@@ -32,7 +31,7 @@ module.exports = {
             .then(user => {
                 if (user.password === password) {
                     const payload = {id: user.id};
-                    const token = jwt.sign(payload, jwtConfig.secret);
+                    const token = jwt.sign(payload, process.env.JWT_SECRET);
                     return res.json({ message: "ok", data: { token } });
                 } else {
                     return res.status(401).json({ message: "Passwords did not match" });
