@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "pbteja1998",
+      "name": "Bhanu Teja P",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/17903466?v=4",
+      "profile": "https://github.com/pbteja1998",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "openrank-backend",
+  "projectOwner": "coderplex",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
