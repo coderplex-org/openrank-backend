@@ -21,6 +21,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://krushiraj.github.io"><img src="https://avatars0.githubusercontent.com/u/19507241?v=4" width="100px;" alt="Krushi Raj Tula"/><br /><sub><b>Krushi Raj Tula</b></sub></a><br /><a href="https://github.com/coderplex/openrank-backend/commits?author=krushiraj" title="Code">💻</a> <a href="https://github.com/coderplex/openrank-backend/commits?author=krushiraj" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/pbteja1998"><img src="https://avatars3.githubusercontent.com/u/17903466?v=4" width="100px;" alt="Bhanu Teja P"/><br /><sub><b>Bhanu Teja P</b></sub></a><br /><a href="https://github.com/coderplex/openrank-backend/commits?author=pbteja1998" title="Code">💻</a> <a href="https://github.com/coderplex/openrank-backend/commits?author=pbteja1998" title="Documentation">📖</a></td>
   </tr>
 </table>
 
