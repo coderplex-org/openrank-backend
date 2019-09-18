@@ -6,6 +6,7 @@
   "scripts": {
     "start:dev": "./node_modules/.bin/nodemon ./bin/www",
     "start": "node ./bin/www",
+    "migrate": "npx sequelize-cli db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
