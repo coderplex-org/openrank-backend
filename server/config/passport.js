@@ -15,7 +15,7 @@ const jwtOptions = {
 
 const strategy = new JwtStrategy(jwtOptions, function(req, jwt_payload, done) {
     return User
-        .findOne({ where: { id: jwt_payload.id } })
+        .findByPk(jwt_payload.id)
         .then(user => {
             req.currentUser = user;
             done(null, user)
